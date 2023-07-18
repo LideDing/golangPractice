@@ -10,7 +10,10 @@ func FuncGoroutine() {
     a := 1
     // 创建三个无缓冲的 channel，用于协程之间的同步
     ch1, ch2, ch3, ch4:= make(chan struct{}), make(chan struct{}), make(chan struct{}),make(chan struct{})
+	// chs:=make([]chan struct{},10)
+	
     var wg sync.WaitGroup
+	
 
     wg.Add(4) // WaitGroup 需要等待三个协程执行结束
 
@@ -31,7 +34,7 @@ func FuncGoroutine() {
 
 func goroutine1(i *int, ch1, ch2 chan struct{},wg *sync.WaitGroup) {
     defer func ()  {
-		close(ch1)
+		// close(ch1)
 		wg.Done()	
 	}() // 在 goroutine1 结束时关闭 ch1
     <-ch1            // 等待 ch1 上接收到数据
@@ -42,7 +45,7 @@ func goroutine1(i *int, ch1, ch2 chan struct{},wg *sync.WaitGroup) {
 
 func goroutine2(i *int, ch2, ch3 chan struct{},wg *sync.WaitGroup) {
 	defer func ()  {
-		close(ch2)
+		// close(ch2)
 		wg.Done()	
 	}() // 在 goroutine2 结束时关闭 ch2
     // defer close(ch2) // 在 goroutine2 结束时关闭 ch2
@@ -54,7 +57,7 @@ func goroutine2(i *int, ch2, ch3 chan struct{},wg *sync.WaitGroup) {
 
 func goroutine3(i *int, ch3,ch4 chan struct{},wg *sync.WaitGroup) {
 	defer func ()  {
-		close(ch3)
+		// close(ch3)
 		wg.Done()	
 	}() // 在 goroutine3 结束时关闭 ch3
     // defer close(ch3) // 在 goroutine3 结束时关闭 ch3
@@ -65,11 +68,11 @@ func goroutine3(i *int, ch3,ch4 chan struct{},wg *sync.WaitGroup) {
 }
 func goroutine4(i *int, ch4 chan struct{},wg *sync.WaitGroup) {
 	defer func ()  {
-		close(ch4)
+		// close(ch4)
 		wg.Done()	
 	}() // 在 goroutine3 结束时关闭 ch3
     // defer close(ch3) // 在 goroutine3 结束时关闭 ch3
-    <-ch4           // 等待 ch3 上接收到数据
+    <-ch4           // 等待 ch4 上接收到数据
     *i+=10             // 修改变量 i 的值
     fmt.Println("goroutine4 ", *i)
 }

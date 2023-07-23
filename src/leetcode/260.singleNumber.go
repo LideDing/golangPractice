@@ -1,6 +1,5 @@
 package leetcode
 
-import "sync"
 /*
 给你一个整数数组 nums，其中恰好有两个元素只出现一次，其余所有元素均出现两次。 找出只出现一次的那两个元素。你可以按 任意顺序 返回答案。
 
@@ -17,20 +16,9 @@ func singleNumber(arr []int)[]int{
 	*/
 	res:=make([]int,2)
 	eor:=0
-	var wg sync.WaitGroup
-	ch:=make(chan int,1)
 	for _,v:=range arr{
-		wg.Add(1)
-		ch<-1
-		go func(v int) {
-			defer func ()  {
-				<-ch
-				wg.Done()	
-			}()
 			eor^=v		
-		}(v)
 	}
-	wg.Wait()
 	/*此时eor=a^b，我们可以知道a和b的二进制表示中至少有一位不同,因为a!=b，
 	假设a和b在第8位上不一样（一个为1，一个为0），我们此时创建一个变量eor'，
 	eor'去和arr中的所有第8位为1的数异或，那么eor'就是a或者b中的一个，假设为a，
@@ -39,23 +27,12 @@ func singleNumber(arr []int)[]int{
 	eor_:=0
 	rightOne:=eor&(^eor+1) //提取出最右侧的1，eor与上自己的相反数，再与上自己，就可以提取出最右侧的1
 	for _,v:=range arr{
-		wg.Add(1)
-		ch<-1
-		go func(v int) {
-			defer func ()  {
-				<-ch
-				wg.Done()	
-			}()
-			if v&rightOne!=0{ //第rightOne位为1的数
-				eor_^=v
-			}
-		}(v)
-
+		if v&rightOne!=0{ //第rightOne位为1的数
+			eor_^=v
+		}
 	}
-	wg.Wait()
 	res[0]=eor_
 	res[1]=eor_^eor
 	return res
-
 }
 

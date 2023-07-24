@@ -8,14 +8,14 @@ import (
 
 func FuncGoroutine() {
     a := 1
-    // 创建三个无缓冲的 channel，用于协程之间的同步
+    // 创建四个无缓冲的 channel，用于协程之间的同步
     ch1, ch2, ch3, ch4:= make(chan struct{}), make(chan struct{}), make(chan struct{}),make(chan struct{})
 	// chs:=make([]chan struct{},10)
 	
     var wg sync.WaitGroup
 	
 
-    wg.Add(4) // WaitGroup 需要等待三个协程执行结束
+    wg.Add(4) // WaitGroup 需要等待四个协程执行结束
 
     // 启动 goroutine1，使用 ch1 和 ch2 进行同步
     go goroutine1(&a, ch1, ch2,&wg)

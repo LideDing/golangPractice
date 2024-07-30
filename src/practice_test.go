@@ -2,7 +2,7 @@ package src
 
 import (
 	"fmt"
-	src "golangPractice/src/sort"
+	sort "golangPractice/src/sort"
 
 	// src "golangPractice/src/mutiply"
 	"testing"
@@ -17,28 +17,29 @@ import (
 
 func TestMergeSort(t *testing.T) {
 	arr := []int{9, 0, 3, 6, -7, 12}
-	res := src.MergeSort(arr)
+	res := sort.MergeSort(arr)
 	fmt.Println(res)
 
 }
 
 func TestInsertSort(t *testing.T) {
 	arr := []int{9, 0, 3, 6, -7, 12}
-	res := src.InsertSort(arr)
+	res := sort.InsertSort(arr)
 	fmt.Println(res)
 }
 
 func TestSelectSort(t *testing.T) {
-	arr := []int{9, 0, 3, 6, -7, 12,-69}
-	res := src.SelectSort(arr)
+	arr := []int{9, 0, 3, 6, -7, 12, -69}
+	res := sort.SelectSort(arr)
 	fmt.Println(res)
 }
 
 func TestBubbleSort(t *testing.T) {
 	arr := []int{9, 0, 3, 6, -7, 12}
-	res := src.BubbleSort(arr)
+	res := sort.BubbleSort(arr)
 	fmt.Println(res)
 }
+
 // func TestFuncGoroutine(t *testing.T) {
 // 	src.FuncGoroutine()
 // }

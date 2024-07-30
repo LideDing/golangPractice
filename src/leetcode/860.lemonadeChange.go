@@ -8,29 +8,28 @@ package leetcode
 注意，一开始你手头没有任何零钱。
 
 给你一个整数数组 bills ，其中 bills[i] 是第 i 位顾客付的账。如果你能给每位顾客正确找零，返回 true ，否则返回 false 。
-
 */
 func lemonadeChange(bills []int) bool {
 	if bills[0] != 5 {
 		return false
 	}
-	five,ten:=0,0
-	for _,v:=range bills{
-		switch v{
+	five, ten := 0, 0
+	for _, v := range bills {
+		switch v {
 		case 5:
 			five++
 		case 10:
 			ten++
 			five--
 		case 20:
-			if ten>0{
+			if ten > 0 {
 				ten--
 				five--
-			}else{
-				five-=3
+			} else {
+				five -= 3
 			}
 		}
-		if five<0{
+		if five < 0 {
 			return false
 		}
 	}

@@ -18,11 +18,11 @@ func TestSmallNum(t *testing.T) {
 }
 
 func TestPreDutchFlag(t *testing.T) {
-	arr := []int{1, 3, 4, 3,9,10,6,2, 5}
+	arr := []int{1, 3, 4, 3, 9, 10, 6, 2, 5}
 	preDutchFlag(arr, 5)
 }
 
 func TestDutchFlag(t *testing.T) {
-	arr := []int{3,5,0,3,14,5,2,6,9,-6,5}
+	arr := []int{3, 5, 0, 3, 14, 5, 2, 6, 9, -6, 5}
 	dutchFlag(arr, 5)
 }

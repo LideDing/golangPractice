@@ -3,7 +3,7 @@ package leetcode
 /*
 将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。
 */
-func convert(s string, numRows int) string {
+func Convert(s string, numRows int) string {
 	if numRows <= 1 { //特殊情况
 		return s
 	}

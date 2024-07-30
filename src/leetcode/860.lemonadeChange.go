@@ -9,7 +9,7 @@ package leetcode
 
 给你一个整数数组 bills ，其中 bills[i] 是第 i 位顾客付的账。如果你能给每位顾客正确找零，返回 true ，否则返回 false 。
 */
-func lemonadeChange(bills []int) bool {
+func LemonadeChange(bills []int) bool {
 	if bills[0] != 5 {
 		return false
 	}

@@ -10,7 +10,7 @@ package leetcode
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-func singleNumber(arr []int) []int {
+func SingleNumber(arr []int) []int {
 	/*
 		设两个出现一次的数为a,b，剩下所有的数都出现了偶数次
 	*/

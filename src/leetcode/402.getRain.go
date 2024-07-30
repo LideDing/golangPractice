@@ -1,11 +1,11 @@
 package leetcode
 
-func trap(height []int) int {
-	return trap2(height)
+func Trap(height []int) int {
+	return Trap2(height)
 }
 
 // 接雨水
-func trap1(height []int) int { //动态规划解法
+func Trap1(height []int) int { //动态规划解法
 	//=============初始化答案和长度=======================
 	n := len(height) //数组长度
 	if n < 3 {
@@ -48,7 +48,7 @@ func min[T int | int16 | int32 | int64 | int8 | float32 | float64](a, b T) T { /
 }
 
 // 双指针解法
-func trap2(height []int) int {
+func Trap2(height []int) int {
 	n := len(height)
 	if n < 3 {
 		return 0
@@ -71,7 +71,7 @@ func trap2(height []int) int {
 }
 
 // 单调栈解法
-func trap3(height []int) int {
+func Trap3(height []int) int {
 	n := len(height)
 	if n < 3 {
 		return 0
